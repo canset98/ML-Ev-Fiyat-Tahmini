@@ -47,8 +47,7 @@ while i<=2:
     for i in elements:
         print(i.text)
         detaylar.append(i.text)
-    # elimizde string olan liste halinde veriler var Önceden oluşturduğumuz listeden stringe çevirme fonksyonuyla stringe
-    # çeviyoruzs
+    # Elimizde string olan liste halinde veriler var,Onceden oluşturduğumuz listeden stringe cevirme fonksiyonuyla stringe ceviyoruz
     det_str = listToString(detaylar)
     # string verimizi split ile satırlara göre ayırıyoruz. Ve ayrı adında değişkene atıyoruz.
     ayrı = det_str.split("\n")
@@ -1357,3 +1356,28 @@ while w <= 35:
     browser.execute_script("window.history.go(-1)")
 
 print("dorduncu sayfa bitti ")
+
+
+
+
+
+
+
+
+# Kaydettiğimiz csv dosyasını okuyoruz.
+df_zingat = pd.read_csv("zingat3.csv")
+print(df_zingat)
+
+# Verisetinde gereksiz satırlar var. Bunlardan kurtuluyoruz
+i = 1
+while i <= 18:
+    df_zingat.drop(i,inplace = True)
+    i=i+2
+
+# Veri Setindeki satır numaralarını düzenliyoruz ve ortaya çıkan gereksiz sütunu da siliyoruz.
+df_zingat = df_zingat.reset_index()
+df_zingat.drop("index", axis = 1, inplace = True)
+
+print(df_zingat)
+
+#df_zingat.to_excel("zingat2.xlsx")
