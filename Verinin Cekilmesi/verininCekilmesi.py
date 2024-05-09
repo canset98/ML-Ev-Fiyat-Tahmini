@@ -29,7 +29,7 @@ browser.get("https://www.emlakjet.com/satilik-konut/istanbul-sariyer/")
 
 i = 1
 while i<=2:
-    tikla = browser.find_element(By.XPATH, "//*[@id='listing-search-wrapper']/div[" + str(i) + "]")
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(i) + "]")
     # tıkla adında değişkene find diyerek bu xpath de 1. olana gidiyor.
     # click diyerek de bu linke tıklıyor ve evin detaylarına bakmak için sayfaya girmiş oluyoruz.
     tikla.click()
