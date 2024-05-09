@@ -143,7 +143,6 @@ while j <= 7:
 
 
 
-
     k = 12
     while k <= 13:
         tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(k) + "]")
@@ -245,8 +244,6 @@ while l <= 17:
     browser.execute_script("window.history.go(-1)")
 
 print("dördüncü kısım çalıştı")
-
-
 
 
 
@@ -359,8 +356,6 @@ print("altinci kısım calisti ")
 
 
 
-
-
 o = 34
 while o <= 39:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(o) + "]")
@@ -411,8 +406,6 @@ while o <= 39:
     browser.execute_script("window.history.go(-1)")
 
 print("1. sf sonu, yedinci kısım son 1 ")
-
-
 
 
 
@@ -471,7 +464,6 @@ print("2. sf bas,sekizinci kısım son 1 ")
 
 
 
-
 r = 4
 while r <= 7:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(r) + "]")
@@ -526,8 +518,6 @@ print("2. sf 2. kısım")
 
 
 
-
-
 s = 12
 while s <= 13:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(s) + "]")
@@ -578,8 +568,6 @@ while s <= 13:
     browser.execute_script("window.history.go(-1)")
 
 print("ikinci sf ucuncu kisim ")
-
-
 
 
 
@@ -639,8 +627,6 @@ print("ikinci sf dorduncu kisim son 1 ")
 
 
 
-
-
 u = 19
 while u <= 29:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(u) + "]")
@@ -691,7 +677,6 @@ while u <= 29:
     browser.execute_script("window.history.go(-1)")
 
 print("ikinci sf bitti ")
-
 
 
 
@@ -750,7 +735,6 @@ print("ucuncu sf birinci kısım son 1 ")
 
 
 
-
 y = 4
 while y <= 7:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(y) + "]")
@@ -805,8 +789,6 @@ print("ucuncu sf ikinci kısım son 1 ")
 
 
 
-
-
 z = 9
 while z <= 10:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(z) + "]")
@@ -857,7 +839,6 @@ while z <= 10:
     browser.execute_script("window.history.go(-1)")
 
 print("ucuncu sf ucuncu kısım son 1 ")
-
 
 
 
@@ -917,7 +898,6 @@ print("ucuncu sf dorduncu kısım son 1 ")
 
 
 
-
 b = 15
 while b <= 24:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(b) + "]")
@@ -972,7 +952,6 @@ print("ucuncu sayfa beşinci kısım son 1 ")
 
 
 
-
 c = 26
 while c <= 35:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(c) + "]")
@@ -1023,7 +1002,6 @@ while c <= 35:
     browser.execute_script("window.history.go(-1)")
 
 print("ucuncu sayfa bitti ")
-
 
 
 
@@ -1084,7 +1062,6 @@ print("dorduncu sayfa birinci kısım son 1 ")
 
 
 
-
 e = 4
 while e <= 7:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(e) + "]")
@@ -1135,7 +1112,6 @@ while e <= 7:
     browser.execute_script("window.history.go(-1)")
 
 print("dorduncu sayfa ikinci kısım son 1 ")
-
 
 
 
@@ -1195,7 +1171,6 @@ print("dorduncu sayfa ucuncu kısım son 1 ")
 
 
 
-
 g = 12
 while g <= 13:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(g) + "]")
@@ -1246,7 +1221,6 @@ while g <= 13:
     browser.execute_script("window.history.go(-1)")
 
 print("dorduncu sayfa dorduncu kısım son 1 ")
-
 
 
 
@@ -1305,7 +1279,6 @@ print("dorduncu sayfa beşinci kısım son 1 ")
 
 
 
-
 w = 26
 while w <= 35:
     tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(w) + "]")
@@ -1356,9 +1329,6 @@ while w <= 35:
     browser.execute_script("window.history.go(-1)")
 
 print("dorduncu sayfa bitti ")
-
-
-
 
 
 
