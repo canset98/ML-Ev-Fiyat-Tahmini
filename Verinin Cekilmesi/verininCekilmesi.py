@@ -1,6 +1,8 @@
 from selenium import webdriver
 import time
 import pandas as pd
+from selenium.webdriver.common.by import By
+
 
 # Bu fonksyon listeyi string türüne çevirir.
 def listToString(s):
@@ -8,12 +10,13 @@ def listToString(s):
     str1 = " "
     return (str1.join(s))
     # return string
-
+ # Only if you want to run Chrome in headless mode
 # Bu aşamada selenium ile veri çekmeye başlıyoruz.
 # chrome driverin yolunu veriyoruz. Selenium u kullanmak için gereklidir.
-driver_path = "C:/Users/User/Desktop/BUÜ MF BMB/Python/Yeni klasör/chromedriver-win64/chromedriver-win64/chromedriver.exe"
+
+cService=webdriver.ChromeService(executable_path=r"C:\Users\User\Desktop\BUÜ MF BMB\Python\Yeni klasör\chromedriver-win64\chromedriver-win64\chromedriver.exe")
 # browser adında bir değişken oluşturuyoruz ve driver yolumuzu veriyoruz,bunu ortam değişkenlerine eklememiz gerekiyor öncesinde
-browser = webdriver.Chrome(driver_path)
+browser = webdriver.Chrome(service = cService)
 # browser get ile verdiğimiz adres de ki web sitesine gitmiş oluyoruz.
 browser.get("https://www.emlakjet.com/satilik-konut/istanbul-sariyer/")
 
@@ -26,14 +29,14 @@ browser.get("https://www.emlakjet.com/satilik-konut/istanbul-sariyer/")
 
 i = 1
 while i<=2:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(i) + "]")
+    tikla = browser.find_element(By.XPATH, "//*[@id='listing-search-wrapper']/div[" + str(i) + "]")
     # tıkla adında değişkene find diyerek bu xpath de 1. olana gidiyor.
     # click diyerek de bu linke tıklıyor ve evin detaylarına bakmak için sayfaya girmiş oluyoruz.
-    tıkla.click()
+    tikla.click()
     # özelliklerin hepsini almak için bu sefer bu kod ile oradaki css bloğuna göre veriyi çekeceğiz.
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
     # özellikleri bir önceki kodda aldık şimdi de evin fiyatını alıyoruz ve değişkene kaydediyoruz.
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     # 2 tane boş liste oluşturuyoruz. Elimizdeki dağınık veriyi düzenleyip listeye atacağız.
     detaylar = []
@@ -95,12 +98,12 @@ print("ilk kısım çalıştı")
 
 j = 4
 while j <= 7:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(j) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(j) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -145,14 +148,14 @@ while j <= 7:
 
     k = 12
     while k <= 13:
-        tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(k) + "]")
-        tıkla.click()
+        tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(k) + "]")
+        tikla.click()
 
         print("üçüncü kisim 1")
 
-        elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+        elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-        fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+        fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
         detaylar = []
         fiyat = []
@@ -197,12 +200,12 @@ while j <= 7:
 
 l = 15
 while l <= 17:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(l) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(l) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -251,12 +254,12 @@ print("dördüncü kısım çalıştı")
 
 m = 19
 while m <= 24:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(m) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(m) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -304,12 +307,12 @@ print("beşinci kısım calisti ")
 
 n = 27
 while n <= 32:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(n) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(n) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -358,12 +361,12 @@ print("altinci kısım calisti ")
 
 o = 34
 while o <= 39:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(o) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(o) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -412,12 +415,12 @@ print("1. sf sonu, yedinci kısım son 1 ")
 
 p = 1
 while p <= 2:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(p) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(p) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -466,12 +469,12 @@ print("2. sf bas,sekizinci kısım son 1 ")
 
 r = 4
 while r <= 7:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(r) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(r) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -520,12 +523,12 @@ print("2. sf 2. kısım")
 
 s = 12
 while s <= 13:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(s) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(s) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -574,12 +577,12 @@ print("ikinci sf ucuncu kisim ")
 
 t = 15
 while t <= 17:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(t) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(t) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -629,12 +632,12 @@ print("ikinci sf dorduncu kisim son 1 ")
 
 u = 19
 while u <= 29:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(u) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(u) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -683,12 +686,12 @@ print("ikinci sf bitti ")
 
 v = 1
 while v <= 2:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(v) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(v) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -737,12 +740,12 @@ print("ucuncu sf birinci kısım son 1 ")
 
 y = 4
 while y <= 7:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(y) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(y) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -791,12 +794,12 @@ print("ucuncu sf ikinci kısım son 1 ")
 
 z = 9
 while z <= 10:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(z) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(z) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -845,12 +848,12 @@ print("ucuncu sf ucuncu kısım son 1 ")
 
 a = 12
 while a <= 13:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(a) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(a) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -900,12 +903,12 @@ print("ucuncu sf dorduncu kısım son 1 ")
 
 b = 15
 while b <= 24:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(b) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(b) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -954,12 +957,12 @@ print("ucuncu sayfa beşinci kısım son 1 ")
 
 c = 26
 while c <= 35:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(c) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(c) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -1009,12 +1012,12 @@ print("ucuncu sayfa bitti ")
 
 d = 1
 while d <= 2:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(d) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(d) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -1064,12 +1067,12 @@ print("dorduncu sayfa birinci kısım son 1 ")
 
 e = 4
 while e <= 7:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(e) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(e) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -1119,12 +1122,12 @@ print("dorduncu sayfa ikinci kısım son 1 ")
 
 f = 9
 while f <= 10:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(f) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(f) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -1173,12 +1176,12 @@ print("dorduncu sayfa ucuncu kısım son 1 ")
 
 g = 12
 while g <= 13:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(g) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(g) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -1227,12 +1230,12 @@ print("dorduncu sayfa dorduncu kısım son 1 ")
 
 h = 15
 while h <= 24:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(h) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(h) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
@@ -1281,12 +1284,12 @@ print("dorduncu sayfa beşinci kısım son 1 ")
 
 w = 26
 while w <= 35:
-    tıkla = browser.find_element_by_xpath("//*[@id='listing-search-wrapper']/div[" + str(w) + "]")
-    tıkla.click()
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(w) + "]")
+    tikla.click()
 
-    elements = browser.find_elements_by_css_selector("_2VNNor _2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"_2VNNor _2eyo_P")
 
-    fiyatlar = browser.find_elements_by_css_selector("_2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"_2TxNQv")
 
     detaylar = []
     fiyat = []
