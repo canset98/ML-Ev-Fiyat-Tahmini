@@ -335,7 +335,7 @@ while n <= 32:
     df = pd.DataFrame(ayrı)
     # print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:19]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -445,7 +445,7 @@ while p <= 2:
     df = pd.DataFrame(ayrı)
     # print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[26] = df_yeni.iloc[26].str[0:3]
+    df_yeni.iloc[26] = df_yeni.iloc[26].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -606,9 +606,9 @@ while t <= 17:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    print(df.shape)
+    #print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -663,7 +663,7 @@ while u <= 29:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -671,7 +671,7 @@ while u <= 29:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -933,9 +933,9 @@ while b <= 24:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    print(df.shape)
+    # print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[26] = df_yeni.iloc[26].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -943,7 +943,7 @@ while b <= 24:
 
     içerikler = []
     i = 1
-    while i <= 27:
+    while i <= 26:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -989,7 +989,7 @@ while c <= 35:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1044,7 +1044,7 @@ while d <= 2:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1099,7 +1099,7 @@ while e <= 7:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1154,7 +1154,7 @@ while f <= 10:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1208,7 +1208,7 @@ while g <= 13:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1262,7 +1262,7 @@ while h <= 24:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1316,7 +1316,7 @@ while w <= 35:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
