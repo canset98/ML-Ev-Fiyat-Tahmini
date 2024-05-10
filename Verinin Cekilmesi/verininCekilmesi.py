@@ -333,8 +333,9 @@ while n <= 32:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
+    # print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -342,7 +343,7 @@ while n <= 32:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -387,8 +388,9 @@ while o <= 39:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
+    #print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -396,7 +398,7 @@ while o <= 39:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -416,7 +418,7 @@ print("1. sf sonu, yedinci kısım son 1 ")
 
 
 
-
+browser.get("https://www.emlakjet.com/satilik-konut/istanbul-sariyer/2/")
 p = 1
 while p <= 2:
     tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(p) + "]")
@@ -441,8 +443,9 @@ while p <= 2:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
+    # print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[26] = df_yeni.iloc[26].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -450,7 +453,7 @@ while p <= 2:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 26:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -603,8 +606,9 @@ while t <= 17:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
+    print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -612,7 +616,7 @@ while t <= 17:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -687,7 +691,7 @@ print("ikinci sf bitti ")
 
 
 
-
+browser.get("https://www.emlakjet.com/satilik-konut/istanbul-sariyer/3/")
 v = 1
 while v <= 2:
     tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(v) + "]")
@@ -929,8 +933,9 @@ while b <= 24:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
+    print(df.shape)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -938,7 +943,7 @@ while b <= 24:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -984,7 +989,7 @@ while c <= 35:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -992,7 +997,7 @@ while c <= 35:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1013,7 +1018,7 @@ print("ucuncu sayfa bitti ")
 
 
 
-
+browser.get("https://www.emlakjet.com/satilik-konut/istanbul-sariyer/4/")
 d = 1
 while d <= 2:
     tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(d) + "]")
@@ -1039,7 +1044,7 @@ while d <= 2:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1047,7 +1052,7 @@ while d <= 2:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1149,7 +1154,7 @@ while f <= 10:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1157,7 +1162,7 @@ while f <= 10:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1203,7 +1208,7 @@ while g <= 13:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1211,7 +1216,7 @@ while g <= 13:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1311,7 +1316,7 @@ while w <= 35:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1319,7 +1324,7 @@ while w <= 35:
 
     içerikler = []
     i = 1
-    while i <= 28:
+    while i <= 27:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1342,19 +1347,19 @@ print("dorduncu sayfa bitti ")
 
 
 # Kaydettiğimiz csv dosyasını okuyoruz.
-df_zingat = pd.read_csv("zingat3.csv")
-print(df_zingat)
+df_emlakjet = pd.read_csv("emlakjet.csv")
+print(df_emlakjet)
 
 # Verisetinde gereksiz satırlar var. Bunlardan kurtuluyoruz
 i = 1
 while i <= 18:
-    df_zingat.drop(i,inplace = True)
+    df_emlakjet.drop(i,inplace = True)
     i=i+2
 
 # Veri Setindeki satır numaralarını düzenliyoruz ve ortaya çıkan gereksiz sütunu da siliyoruz.
-df_zingat = df_zingat.reset_index()
-df_zingat.drop("index", axis = 1, inplace = True)
+df_emlakjet = df_emlakjet.reset_index()
+df_emlakjet.drop("index", axis = 1, inplace = True)
 
-print(df_zingat)
+print(df_emlakjet)
 
-#df_zingat.to_excel("zingat2.xlsx")
+df_emlakjet.to_excel("emlakjet2.xlsx")
