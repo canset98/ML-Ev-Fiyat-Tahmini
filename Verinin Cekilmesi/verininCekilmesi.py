@@ -58,10 +58,10 @@ while i<=2:
     df = pd.DataFrame(ayrı)
     # print(df.head)
     # Verimizdeki gereksiz verilerden kurtulmak için onları ayırıyoruz.
-    df_yeni = df.iloc[1::2]
-    print(df_yeni)
+    df_yeni = df.iloc[::]
+    # print(df_yeni)
     # print(df_yeni.shape)
-    df_yeni.iloc[15] = df_yeni.iloc[15].str[:]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
     # değişiklikler yaptığımız için indexlerde kayma oldu, indexleri resetliyoruz,satir numaralarini duzenlemis oluyoruz
     df_yeni = df_yeni.reset_index()
     # gereksiz olusan index sütununu siliyoruz,reset_index yaptigimiz icin bize fazladan index adinda bir sutun veriyor
@@ -74,7 +74,7 @@ while i<=2:
     # icerikleri sutun adlarından ayırmak icin bu islemi yapıyoruz,sutun adlarina ihtiyacimiz yok
     içerikler = []
     i = 1
-    while i <= 27:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2      # ikiserli ilerleme sebebi: dongu calistiginda:Turu,Konut,Kategorisi,Satilik diye gidecek
@@ -123,8 +123,8 @@ while j <= 7:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -132,7 +132,7 @@ while j <= 7:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -147,59 +147,60 @@ while j <= 7:
     j = j + 1
     browser.execute_script("window.history.go(-1)")
 
+print("ikinci kısım çalıştı")
 
 
-    k = 12
-    while k <= 13:
-        tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(k) + "]")
-        tikla.click()
+k = 12
+while k <= 13:
+    tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(k) + "]")
+    tikla.click()
 
-        print("üçüncü kisim 1")
+    print("üçüncü kisim 1")
 
-        elements = browser.find_elements(By.CSS_SELECTOR,"._2VNNor._2eyo_P")
+    elements = browser.find_elements(By.CSS_SELECTOR,"._2VNNor._2eyo_P")
 
-        fiyatlar = browser.find_elements(By.CSS_SELECTOR,"._2TxNQv")
+    fiyatlar = browser.find_elements(By.CSS_SELECTOR,"._2TxNQv")
 
-        detaylar = []
-        fiyat = []
+    detaylar = []
+    fiyat = []
 
-        for i in fiyatlar:
-            print(i.text)
-            fiyat.append(i.text)
+    for i in fiyatlar:
+        print(i.text)
+        fiyat.append(i.text)
 
-        for i in elements:
-            print(i.text)
-            detaylar.append(i.text)
+    for i in elements:
+        print(i.text)
+        detaylar.append(i.text)
 
-        det_str = listToString(detaylar)
-        ayrı = det_str.split("\n")
+    det_str = listToString(detaylar)
+    ayrı = det_str.split("\n")
 
-        df = pd.DataFrame(ayrı)
-        df_yeni = df.iloc[7:53]
-        df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df = pd.DataFrame(ayrı)
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
-        df_yeni = df_yeni.reset_index()
-        df_yeni.drop("index", axis=1, inplace=True)
-        df_liste = df_yeni.values.tolist()
+    df_yeni = df_yeni.reset_index()
+    df_yeni.drop("index", axis=1, inplace=True)
+    df_liste = df_yeni.values.tolist()
 
-        içerikler = []
-        i = 1
-        while i <= 45:
-            print(df_liste[i])
-            içerikler.append(df_liste[i])
-            i = i + 2
+    içerikler = []
+    i = 1
+    while i <= 28:
+        print(df_liste[i])
+        içerikler.append(df_liste[i])
+        i = i + 2
 
-        fiyat_sade = fiyat[1].strip()
-        fiyat_sade = fiyat_sade.replace("TL", "")
-        içerikler.append([fiyat_sade])
-        df_içerikler = pd.DataFrame(içerikler).T
+    fiyat_sade = fiyat[1].strip()
+    fiyat_sade = fiyat_sade.replace("TL", "")
+    içerikler.append([fiyat_sade])
+    df_içerikler = pd.DataFrame(içerikler).T
 
-        df_içerikler.to_csv(r"zingat3.csv", encoding="utf-8", index=False, mode="a")
+    df_içerikler.to_csv(r"zingat3.csv", encoding="utf-8", index=False, mode="a")
 
-        k = k + 1
-        browser.execute_script("window.history.go(-1)")
+    k = k + 1
+    browser.execute_script("window.history.go(-1)")
 
-    print("üçüncü kısım çalıştı")
+print("üçüncü kısım çalıştı")
 
 l = 15
 while l <= 17:
@@ -225,8 +226,8 @@ while l <= 17:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -234,7 +235,7 @@ while l <= 17:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -279,8 +280,8 @@ while m <= 24:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -288,7 +289,7 @@ while m <= 24:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -332,8 +333,8 @@ while n <= 32:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -341,7 +342,7 @@ while n <= 32:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -386,8 +387,8 @@ while o <= 39:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -395,7 +396,7 @@ while o <= 39:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -440,8 +441,8 @@ while p <= 2:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -449,7 +450,7 @@ while p <= 2:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -494,8 +495,8 @@ while r <= 7:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -503,7 +504,7 @@ while r <= 7:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -548,8 +549,8 @@ while s <= 13:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -557,7 +558,7 @@ while s <= 13:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -602,8 +603,8 @@ while t <= 17:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -611,7 +612,7 @@ while t <= 17:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -657,8 +658,8 @@ while u <= 29:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -666,7 +667,7 @@ while u <= 29:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -711,8 +712,8 @@ while v <= 2:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -720,7 +721,7 @@ while v <= 2:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -765,8 +766,8 @@ while y <= 7:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -774,7 +775,7 @@ while y <= 7:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -819,8 +820,8 @@ while z <= 10:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -828,7 +829,7 @@ while z <= 10:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -873,8 +874,8 @@ while a <= 13:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -882,7 +883,7 @@ while a <= 13:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -928,8 +929,8 @@ while b <= 24:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -937,7 +938,7 @@ while b <= 24:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -982,8 +983,8 @@ while c <= 35:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -991,7 +992,7 @@ while c <= 35:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1037,8 +1038,8 @@ while d <= 2:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1046,7 +1047,7 @@ while d <= 2:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1092,8 +1093,8 @@ while e <= 7:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1101,7 +1102,7 @@ while e <= 7:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1147,8 +1148,8 @@ while f <= 10:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1156,7 +1157,7 @@ while f <= 10:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1201,8 +1202,8 @@ while g <= 13:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1210,7 +1211,7 @@ while g <= 13:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1255,8 +1256,8 @@ while h <= 24:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1264,7 +1265,7 @@ while h <= 24:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
@@ -1309,8 +1310,8 @@ while w <= 35:
     ayrı = det_str.split("\n")
 
     df = pd.DataFrame(ayrı)
-    df_yeni = df.iloc[7:53]
-    df_yeni.iloc[45] = df_yeni.iloc[45].str[0:3]
+    df_yeni = df.iloc[::]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1318,7 +1319,7 @@ while w <= 35:
 
     içerikler = []
     i = 1
-    while i <= 45:
+    while i <= 28:
         print(df_liste[i])
         içerikler.append(df_liste[i])
         i = i + 2
