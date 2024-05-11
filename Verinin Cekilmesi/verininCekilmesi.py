@@ -15,7 +15,7 @@ def listToString(s):
 # Bu aşamada selenium ile veri çekmeye başlıyoruz.
 # chrome driverin yolunu veriyoruz. Selenium u kullanmak için gereklidir.
 
-cService=webdriver.ChromeService(executable_path=r"C:\Users\User\Desktop\BUÜ MF BMB\Python\Yeni klasör\chromedriver-win64\chromedriver-win64\chromedriver.exe")
+cService=webdriver.ChromeService(executable_path=r"C:\Users\Ranim\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe")
 # browser adında bir değişken oluşturuyoruz ve driver yolumuzu veriyoruz,bunu ortam değişkenlerine eklememiz gerekiyor öncesinde
 browser = webdriver.Chrome(service = cService)
 # browser get ile verdiğimiz adres de ki web sitesine gitmiş oluyoruz.
@@ -253,10 +253,20 @@ while l <= 17:
 
 print("dördüncü kısım çalıştı")
 
+df_zingat = pd.read_csv("zingat3.csv")
+rows, columns = df_zingat.shape
+print("Number of rows:", rows)
+print("Number of columns:", columns)
 
+i = 1
+while i <= 18:
+    df_zingat.drop(i,inplace = True)
+    i=i+2
 
-
-
+df_zingat = df_zingat.reset_index()
+df_zingat.drop("index", axis = 1, inplace = True)
+df_zingat.to_excel("zingat2.xlsx")
+"""
 m = 19
 while m <= 24:
     tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(m) + "]")
@@ -1341,13 +1351,16 @@ while w <= 35:
     w = w + 1
     browser.execute_script("window.history.go(-1)")
 
-print("dorduncu sayfa bitti ")
+print("dorduncu sayfa bitti ")"""
+
+
+
 
 
 
 
 # data = pd.read_csv('zingat3.csv')
-
+#df = pd.read_csv('zingat3.csv')
 '''
 # csv dosyasını oku
 df = pd.read_csv("zingat3.csv")
@@ -1364,19 +1377,19 @@ df.to_excel("zingat2.xlsx", index=False)
 
 
 # Kaydettiğimiz csv dosyasını okuyoruz.
-df_zingat = pd.read_csv("zingat3.csv")
-print(df_zingat)
+
+
 
 # Verisetinde gereksiz satırlar var. Bunlardan kurtuluyoruz
-i = 1
-while i <= 14:
-    df_zingat.drop(i,inplace = True)
-    i=i+2
+#i = 1
+#while i <= 14:
+    #df_zingat.drop(i,inplace = True)
+    #i=i+2
 
 # Veri Setindeki satır numaralarını düzenliyoruz ve ortaya çıkan gereksiz sütunu da siliyoruz.
-df_zingat = df_zingat.reset_index()
-df_zingat.drop("index", axis = 1, inplace = True)
+#df_zingat = df_zingat.reset_index()
+#df_zingat.drop("index", axis = 1, inplace = True)
 
-print(df_zingat)
+#print(df_zingat)
 
-print(df_zingat.to_excel("zingat2.xlsx"))
+#print(df_zingat.to_excel("zingat2.xlsx"))
