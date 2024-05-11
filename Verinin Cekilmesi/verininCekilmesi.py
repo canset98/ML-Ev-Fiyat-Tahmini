@@ -255,8 +255,6 @@ print("dördüncü kısım çalıştı")
 
 
 
-
-
 m = 19
 while m <= 24:
     tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(m) + "]")
@@ -689,6 +687,7 @@ while u <= 29:
     browser.execute_script("window.history.go(-1)")
 
 print("ikinci sf bitti ")
+
 
 
 
@@ -1345,38 +1344,18 @@ print("dorduncu sayfa bitti ")
 
 
 
-
-# data = pd.read_csv('zingat3.csv')
-
-'''
-# csv dosyasını oku
-df = pd.read_csv("zingat3.csv")
-
-# Gereksiz satırları kaldır
-df = df.drop(df.index[1:19:2])
-
-# Yeniden indeksleme yap
-df = df.reset_index(drop=True)
-
-# Excel'e kaydet
-df.to_excel("zingat2.xlsx", index=False)
-'''
-
-
-# Kaydettiğimiz csv dosyasını okuyoruz.
 df_zingat = pd.read_csv("zingat3.csv")
-print(df_zingat)
+rows, columns = df_zingat.shape
+print("Number of rows:", rows)
+print("Number of columns:", columns)
 
-# Verisetinde gereksiz satırlar var. Bunlardan kurtuluyoruz
+
 i = 1
-while i <= 14:
+while i <= 218:
     df_zingat.drop(i,inplace = True)
     i=i+2
 
-# Veri Setindeki satır numaralarını düzenliyoruz ve ortaya çıkan gereksiz sütunu da siliyoruz.
 df_zingat = df_zingat.reset_index()
 df_zingat.drop("index", axis = 1, inplace = True)
+df_zingat.to_excel("zingat2.xlsx")
 
-print(df_zingat)
-
-print(df_zingat.to_excel("zingat2.xlsx"))
