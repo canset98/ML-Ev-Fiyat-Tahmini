@@ -15,7 +15,7 @@ def listToString(s):
 # Bu aşamada selenium ile veri çekmeye başlıyoruz.
 # chrome driverin yolunu veriyoruz. Selenium u kullanmak için gereklidir.
 
-cService=webdriver.ChromeService(executable_path=r"C:\Users\User\Desktop\BUÜ MF BMB\Python\Yeni klasör\chromedriver-win64\chromedriver-win64\chromedriver.exe")
+cService=webdriver.ChromeService(executable_path=r"C:\Users\90555\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe")
 # browser adında bir değişken oluşturuyoruz ve driver yolumuzu veriyoruz,bunu ortam değişkenlerine eklememiz gerekiyor öncesinde
 browser = webdriver.Chrome(service = cService)
 # browser get ile verdiğimiz adres de ki web sitesine gitmiş oluyoruz.
