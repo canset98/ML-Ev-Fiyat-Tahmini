@@ -254,7 +254,6 @@ while l <= 17:
 print("dördüncü kısım çalıştı")
 
 
-
 m = 19
 while m <= 24:
     tikla = browser.find_element(By.XPATH,"//*[@id='listing-search-wrapper']/div[" + str(m) + "]")
@@ -1344,6 +1343,9 @@ print("dorduncu sayfa bitti ")
 
 
 
+
+
+
 df_zingat = pd.read_csv("zingat3.csv")
 rows, columns = df_zingat.shape
 print("Number of rows:", rows)
@@ -1358,4 +1360,5 @@ while i <= 218:
 df_zingat = df_zingat.reset_index()
 df_zingat.drop("index", axis = 1, inplace = True)
 df_zingat.to_excel("zingat2.xlsx")
+
 
