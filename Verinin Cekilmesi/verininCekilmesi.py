@@ -1344,35 +1344,39 @@ while w <= 35:
 print("dorduncu sayfa bitti ")
 
 
-''' 
-# CSV dosyasını DataFrame'e yükleme
-df_emlakjet = pd.read_csv("emlakjet.csv")
 
-# Gereksiz satırları kaldırma
-df_emlakjet = df_emlakjet.drop(range(1, 19, 2))
 
-# Satır numaralarını yeniden düzenleme ve gereksiz sütunu silme
-df_emlakjet = df_emlakjet.reset_index(drop=True)
+# data = pd.read_csv('zingat3.csv')
 
-# DataFrame'i Excel dosyasına dönüştürme ve kaydetme
-df_emlakjet.to_excel("emlakjet2.xlsx", index=False)
+'''
+# csv dosyasını oku
+df = pd.read_csv("zingat3.csv")
+
+# Gereksiz satırları kaldır
+df = df.drop(df.index[1:19:2])
+
+# Yeniden indeksleme yap
+df = df.reset_index(drop=True)
+
+# Excel'e kaydet
+df.to_excel("zingat2.xlsx", index=False)
 '''
 
 
 # Kaydettiğimiz csv dosyasını okuyoruz.
-df.csv = pd.read_csv("zingat3.csv")
-print(df)
+df_zingat = pd.read_csv("zingat3.csv")
+print(df_zingat)
 
 # Verisetinde gereksiz satırlar var. Bunlardan kurtuluyoruz
 i = 1
-while i <= 18:
-    df.drop(i,inplace = True)
+while i <= 14:
+    df_zingat.drop(i,inplace = True)
     i=i+2
 
 # Veri Setindeki satır numaralarını düzenliyoruz ve ortaya çıkan gereksiz sütunu da siliyoruz.
-df_zingat3 = df.reset_index()
-df_zingat3.drop("index", axis = 1, inplace = True)
+df_zingat = df_zingat.reset_index()
+df_zingat.drop("index", axis = 1, inplace = True)
 
-print(df_zingat3)
+print(df_zingat)
 
-df_zingat3.to_excel("zingat2.xlsx")
+print(df_zingat.to_excel("zingat2.xlsx"))
