@@ -2,6 +2,7 @@ from selenium import webdriver
 import time
 import pandas as pd
 from selenium.webdriver.common.by import By
+import openpyxl
 
 
 # Bu fonksyon listeyi string türüne çevirir.
@@ -124,7 +125,7 @@ while j <= 7:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -177,7 +178,7 @@ while k <= 13:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -227,7 +228,7 @@ while l <= 17:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -281,7 +282,7 @@ while m <= 24:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -499,7 +500,7 @@ while r <= 7:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[27] = df_yeni.iloc[27].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -553,7 +554,7 @@ while s <= 13:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -717,7 +718,7 @@ while v <= 2:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -771,7 +772,7 @@ while y <= 7:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -825,7 +826,7 @@ while z <= 10:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -879,7 +880,7 @@ while a <= 13:
 
     df = pd.DataFrame(ayrı)
     df_yeni = df.iloc[::]
-    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:3]
+    df_yeni.iloc[28] = df_yeni.iloc[28].str[0:20]
 
     df_yeni = df_yeni.reset_index()
     df_yeni.drop("index", axis=1, inplace=True)
@@ -1344,8 +1345,18 @@ print("dorduncu sayfa bitti ")
 
 
 
+# CSV dosyasını DataFrame'e yükleme
+df_emlakjet = pd.read_csv("emlakjet.csv")
 
+# Gereksiz satırları kaldırma
+df_emlakjet = df_emlakjet.drop(range(1, 19, 2))
 
+# Satır numaralarını yeniden düzenleme ve gereksiz sütunu silme
+df_emlakjet = df_emlakjet.reset_index(drop=True)
+
+# DataFrame'i Excel dosyasına dönüştürme ve kaydetme
+df_emlakjet.to_excel("emlakjet2.xlsx", index=False)
+'''
 # Kaydettiğimiz csv dosyasını okuyoruz.
 df_emlakjet = pd.read_csv("emlakjet.csv")
 print(df_emlakjet)
@@ -1363,3 +1374,4 @@ df_emlakjet.drop("index", axis = 1, inplace = True)
 print(df_emlakjet)
 
 df_emlakjet.to_excel("emlakjet2.xlsx")
+'''
