@@ -175,7 +175,6 @@ df.loc[df.Bulunduğu_Kat == "Kot 3 (-3). Kat" , "Bulunduğu_Kat"] = "-3"
 print(df.Bulunduğu_Kat.value_counts())
 print(df.Bulunduğu_Kat.unique())
 
-
 # etiketleme
 df_3["Bulunduğu_Kat"] = le.fit_transform(df_2.Bulunduğu_Kat)
 
