@@ -186,5 +186,6 @@ for column in df_3.columns:
     print("\n")
 
 
-# son halini excel dosyası olarak kaydediyoruz.
+# son halini excel ve csv dosyası olarak kaydediyoruz.
 df_3.to_excel("son_hali_emlakjet.xlsx")
+df_3.to_csv("son_hali_emlakjet.csv")
