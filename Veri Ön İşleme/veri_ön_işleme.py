@@ -84,10 +84,10 @@ print(le.classes_)
 
 print(df_3.İlçe.unique())
 # etiketlenmiş verilerin karşılığını öğreniriz.
-le.inverse_transform([1])
-le.inverse_transform([3])
-le.inverse_transform([7])
-le.inverse_transform([10])
+print(le.inverse_transform([1]))
+print(le.inverse_transform([3]))
+print(le.inverse_transform([7]))
+print(le.inverse_transform([10]))
 # etiketledikten sonra hangi değerin hangi veriye karşılık geldiğini tek tek öğrenebiliriz.
 
 
