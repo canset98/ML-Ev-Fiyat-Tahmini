@@ -8,7 +8,7 @@ from tkinter.ttk import Combobox
 from tkinter import messagebox
 from tkinter import Canvas
 from tkinter import ttk
-from sklearn.model_selection import train_test_split, GridSearchCV,cross_val_score
+import sklearn.model_selection
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 import pandas as pd
@@ -18,7 +18,7 @@ from xgboost import XGBRegressor
 
 #Veri Setini Okuyoruz
 
-df_2 = (pd.read_csv(r"C:\Users\pvtech\Downloads\son_hali_emlakjet (1).xlsx"))
+df_2 = (pd.read_csv(r"C:\Users\pvtech\Downloads\son_hali_emlakjet.csv"))
 df_2.drop("Unnamed: 0", axis = 1, inplace = True)
 df = df_2.copy()
 
