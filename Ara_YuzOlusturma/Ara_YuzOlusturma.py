@@ -22,6 +22,7 @@ df_2 = (pd.read_csv(r"C:\Users\pvtech\Downloads\son_hali_emlakjet (1).xlsx"))
 df_2.drop("Unnamed: 0", axis = 1, inplace = True)
 df = df_2.copy()
 
+#Fiyat tahmininde bize evin değerinin pahalı yada ucuz olduğunu hesapta göstermeye yarayan sütunlarımızı giriyoruz.
 df = df[["ilçe","türü","net_metrekare","alan","oda_sayısı","bina_yaşı","ısıtma","site_içerisinde",
          "eşya_durumu","banyo_sayısı","wc_sayısı","dairenin_katı","fiyat"]]
 
@@ -38,9 +39,9 @@ model_xgb.score(X_test, y_test)
 #İlk olarak bir pencere bir "nesne" oluşturuyoruz.
 
 pencere = Tk()
-pencere.title("Ev Fiyat Tahmini")
+pencere.title("Ev Fiyat Tahmini") #Penceremizin başlığını veriyoruz
 
-pencere.configure(background='#81e6d9')
+pencere.configure(background='#81e6d9')#pencerenin arka plan rengini ve geometri ölçülerini veriyoruz.
 pencere.geometry("1700x900")
 pencere.state("normal")
 
@@ -50,7 +51,7 @@ def mesaj():
 
 
 def olumsuz():
-    messagebox.showwarning(title="Dikkat", message="Seçim Yapmadınız")
+    messagebox.showwarning(title="Dikkat", message="Seçim Yapmadınız") #uyarı mesajımız
 
 
 # DEĞİŞKENLER
@@ -591,7 +592,7 @@ def daire_düzenle():
     def hesapla():
         yeni_veri = [[ilce], [tür], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo], [wc], [daire]]
         yeni_veri = pd.DataFrame(yeni_veri).T
-
+        # kullanıcı seçe bastığı zaman bir değer oluşuyor o değeri de yeni_veri adında bir değişkene atadım ve bunu dataframe'e çevirerek tranzpozunu aldım yani veri setinde makine öğrenmesini aynı hale getirdim ki makine öğrenmesinde tahmin ettirebileyim.
         df_2 = yeni_veri.rename(columns={0: "ilçe",
                                          1: "türü",
                                          2: "net_metrekare",
@@ -606,11 +607,11 @@ def daire_düzenle():
                                          11: "dairenin_katı"})
 
         pred = model_xgb.predict(df_2)
-
+#sonra oluşturduğum modelde df_2 ye tahmin yaptırdım.bunu da pred diye tahmine atadım.
         if (pred < 0):
             pred = -1 * pred
 
-        pred = int(pred)
+        pred = int(pred) #int değerine çevirdim
 
         s2 = Label(pencere, text=pred, font="helvetica 20", borderwidth=6, padx=200, pady=40)
         s2.place(x=1210, y=700)
