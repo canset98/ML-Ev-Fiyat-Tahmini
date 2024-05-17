@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 from sklearn import model_selection
 import xgboost as xgb
+from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 
 #Veri Setini Okuyoruz
@@ -23,11 +24,11 @@ df_2.drop("Unnamed: 0", axis = 1, inplace = True)
 df = df_2.copy()
 
 #Fiyat tahmininde bize evin değerinin pahalı yada ucuz olduğunu hesapta göstermeye yarayan sütunlarımızı giriyoruz.
-df = df[["ilçe","türü","net_metrekare","alan","oda_sayısı","bina_yaşı","ısıtma","site_içerisinde",
-         "eşya_durumu","banyo_sayısı","wc_sayısı","dairenin_katı","fiyat"]]
+df = df[["İlçe","Türü","Net_Metrekare","Brüt_Metrekare","Oda_Sayısı","Binanın_Yaşı","Isıtma_Tipi","Site_İçerisinde",
+         "Eşya_Durumu","Banyo_Sayısı","Bulunduğu_Kat","Fiyatı","yaka","Kullanım_Durumu","Nüfus","Yaşam_endeksi","Mahalle","Krediye_Uygunluk"]]
 
-X = df.drop(["fiyat"], axis = 1)
-y = df["fiyat"]
+X = df.drop(["Fiyatı"], axis = 1)
+y = df["Fiyatı"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 144)
 xgb1 = XGBRegressor(colsample_bytree = 0.5, learning_rate = 0.09, max_depth = 4, n_estimators = 2000)
@@ -56,76 +57,76 @@ def olumsuz():
 
 # DEĞİŞKENLER
 
-def ilce_düzenle():
-    global ilce
-    ilce_deger = ilce_kutu.get()
-    if (ilce_deger == "Sarıyer"):
-        ilce = 0
+def İlçe_düzenle():
+    global İlçe
+    İlçe_deger = "İlçe_kutu".get()
+    if (İlçe_deger == "Sarıyer"):
+        İlçe = 0
         mesaj()
-    elif (ilce_deger == "Silivri"):
-        ilce = 1
+    elif (İlçe_deger == "Silivri"):
+        İlçe = 1
         mesaj()
-    elif (ilce_deger == "Sultanbeyli"):
-        ilce = 2
+    elif (İlçe_deger == "Sultanbeyli"):
+        İlçe = 2
         mesaj()
-    elif (ilce_deger == "Sultangazi"):
-        ilce = 3
+    elif (İlçe_deger == "Sultangazi"):
+        İlçe = 3
         mesaj()
-    elif (ilce_deger == "Tuzla"):
-        ilce = 4
+    elif (İlçe_deger == "Tuzla"):
+        İlçe = 4
         mesaj()
-    elif (ilce_deger == "Zeytinburnu"):
-        ilce = 5
+    elif (İlçe_deger == "Zeytinburnu"):
+        İlçe = 5
         mesaj()
-    elif (ilce_deger == "Çekmeköy"):
-        ilce = 6
+    elif (İlçe_deger== "Çekmeköy"):
+        İlçe = 6
         mesaj()
-    elif (ilce_deger == "Ümraniye"):
-        ilce = 7
+    elif (İlçe_deger == "Ümraniye"):
+        İlçe = 7
         mesaj()
-    elif (ilce_deger == "Sultanbeyli"):
-        ilce = 8
+    elif (İlçe_deger == "Sultanbeyli"):
+        İlçe = 8
         mesaj()
-    elif (ilce_deger == "Üsküdar"):
-        ilce = 9
+    elif (İlçe_deger == "Üsküdar"):
+        İlçe = 9
         mesaj()
-    elif (ilce_deger == "Şile"):
-        ilce = 10
+    elif (İlçe_deger == "Şile"):
+        İlçe = 10
         mesaj()
-    elif (ilce_deger == "Şişli"):
-        ilce = 11
+    elif (İlçe_deger == "Şişli"):
+        İlçe = 11
         mesaj()
     else:
         olumsuz()
-    print(ilce)
+    print(İlçe)
 
 
-def tür_düzenle():
-    global tür
-    tür_deger = tür_kutu.get()
-    if (tür_deger == "Bina"):
-        tür = 0
+def Türü_düzenle():
+    global Türü
+    Türü_deger = "Türü_kutu".get()
+    if (Türü_deger == "Bina"):
+        Türü = 0
         mesaj()
-    elif (tür_deger == "Daire"):
-        tür = 1
+    elif (Türü_deger == "Daire"):
+        Türü = 1
         mesaj()
-    elif (tür_deger == "Köşk"):
-        tür = 2
+    elif (Türü_deger == "Köşk"):
+        Türü = 2
         mesaj()
-    elif (tür_deger == "Müstakil"):
-        tür = 3
+    elif (Türü_deger == "Müstakil"):
+        Türü = 3
         mesaj()
-    elif (tür_deger == "Residence"):
-        tür = 4
+    elif (Türü_deger == "Residence"):
+        Türü = 4
         mesaj()
-    elif (tür_deger == "Villa"):
-        tür = 5
+    elif (Türü_deger == "Villa Tipi"):
+        Türü = 5
         mesaj()
-    elif (tür_deger == "Yalı"):
-        tür = 6
+    elif (Türü_deger== "Yalı"):
+        Türü = 6
         mesaj()
-    elif (tür_deger == "yalı dairesi"):
-        tür = 7
+    elif (Türü_deger== "yalı dairesi"):
+        Türü = 7
         mesaj()
     else:
         olumsuz()
@@ -133,7 +134,7 @@ def tür_düzenle():
 
 def net_düzenle():
     global net
-    net_metrekare = int(net_entry.get())
+    net_metrekare = int("net_entry".get())
     if (net_metrekare > 0):
         net = net_metrekare
         mesaj()
@@ -144,7 +145,7 @@ def net_düzenle():
 
 def oda_düzenle():
     global oda
-    oda_deger = oda_kutu.get()
+    oda_deger = "oda_kutu".get()
     if (oda_deger == "1"):
         oda = 0
         mesaj()
@@ -205,7 +206,7 @@ def oda_düzenle():
 
 def yaş_düzenle():
     global yaş
-    yaş_deger = yaşlar_kutu.get()
+    yaş_deger = "yaşlar_kutu".get()
     if (yaş_deger == "0"):
         yaş = 0
         mesaj()
@@ -236,7 +237,7 @@ def yaş_düzenle():
 
 def site_düzenle():
     global site
-    site_deger = site_kutu.get()
+    site_deger = "site_kutu".get()
     if (site_deger == "Evet"):
         site = 0
         mesaj()
@@ -249,7 +250,7 @@ def site_düzenle():
 
 def eşya_düzenle():
     global eşya
-    eşya_deger = eşya_kutu.get()
+    eşya_deger = "eşya_kutu".get()
     if (eşya_deger == "Boş"):
         eşya = 0
         mesaj()
@@ -262,7 +263,7 @@ def eşya_düzenle():
 
 def alan_düzenle():
     global alan
-    alan_ent = int(alan_entry.get())
+    alan_ent = int("alan_entry".get())
     if (alan_ent > 0):
         alan = alan_ent
         print(alan)
@@ -273,7 +274,7 @@ def alan_düzenle():
 
 def ısıtma_düzenle():
     global ısıtma
-    ısıtma_deger = ısıtma_kutu.get()
+    ısıtma_deger = "ısıtma_kutu".get()
     if (ısıtma_deger == "Doğalgaz Sobalı"):
         ısıtma = 0
         mesaj()
@@ -310,7 +311,7 @@ def ısıtma_düzenle():
 
 def banyo_düzenle():
     global banyo
-    banyo_deger = banyo_kutu.get()
+    banyo_deger = "banyo_kutu".get()
     if (banyo_deger == "0"):
         banyo = 0
         mesaj()
@@ -336,37 +337,10 @@ def banyo_düzenle():
         olumsuz()
 
 
-def wc_düzenle():
-    global wc
-    wc_deger = wc_kutu.get()
-    if (wc_deger == "0"):
-        wc = 0
-        mesaj()
-    elif (wc_deger == "1"):
-        wc = 1
-        mesaj()
-    elif (wc_deger == "2"):
-        wc = 2
-        mesaj()
-    elif (wc_deger == "3"):
-        wc = 3
-        mesaj()
-    elif (wc_deger == "4"):
-        wc = 4
-        mesaj()
-    elif (wc_deger == "5"):
-        wc = 5
-        mesaj()
-    elif (wc_deger == "6+"):
-        wc = 6
-        mesaj()
-    else:
-        olumsuz()
-
 
 def daire_düzenle():
     global daire
-    daire_deger = daire_kutu.get()
+    daire_deger = "daire_kutu".get()
     if (daire_deger == "-1"):
         daire = 0
         mesaj()
@@ -412,29 +386,16 @@ def daire_düzenle():
     elif (daire_deger == "9"):
         daire = 15
         mesaj()
-    elif (daire_deger == "Bahçe Katı"):
-        daire = 17
-        mesaj()
-    elif (daire_deger == "Bahçe Dublex"):
+
+    elif (daire_deger == "Bodrum"):
         daire = 16
         mesaj()
-    elif (daire_deger == "Bodrum"):
-        daire = 18
-        mesaj()
     elif (daire_deger == "Giriş"):
-        daire = 19
+        daire = 17
         mesaj()
-    elif (daire_deger == "Müstakil"):
-        daire = 20
-        mesaj()
-    elif (daire_deger == "Villa Tipi"):
-        daire = 21
-        mesaj()
-    elif (daire_deger == "Çatı Dublex"):
-        daire = 22
-        mesaj()
+
     elif (daire_deger == "Çatı Katı"):
-        daire = 22
+        daire = 18
         mesaj()
     else:
         olumsuz()
@@ -447,12 +408,12 @@ def daire_düzenle():
     ilce_label = Label(text="İlçe Seçimi", font="helvetica 12", borderwidth=6)
     ilce_label.place(x=100, y=300)
 
-    ilceler = ["Çekmeköy", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye",
+    İlçeler = ["Çekmeköy", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye",
                "Üsküdar", "Zeytinburnu"]
-    ilce_kutu = Combobox(pencere, values=ilceler)
-    ilce_kutu.place(x=100, y=350)
+    İlçe_kutu = Combobox(pencere, values=İlçeler)
+    İlçe_kutu.place(x=100, y=350)
 
-    ilce_buton = Button(pencere, text="Seç", command=ilce_düzenle, font="helvetica 12", borderwidth=6)
+    ilce_buton = Button(pencere, text="Seç", command=İlçe_düzenle, font="helvetica 12", borderwidth=6)
     ilce_buton.place(x=100, y=400)
     # --------
 
@@ -460,12 +421,12 @@ def daire_düzenle():
     bina_label = Label(text="Bina Türünü Seçiniz", font="helvetica 12", borderwidth=6)
     bina_label.place(x=300, y=300)
 
-    türler = ["Bina", "Daire", "Köşk", "Müstakil", "Residence", "Villa", "Yalı", "yalı dairesi", "yazlık",
+    türler = ["Bina", "Daire", "Köşk", "Müstakil", "Residence", "Villa Tipi", "Yalı", "yalı dairesi", "yazlık",
               "çiftlik evi"]
     tür_kutu = Combobox(pencere, values=türler)
     tür_kutu.place(x=300, y=350)
 
-    tür_buton = Button(pencere, text="Seç", command=tür_düzenle, font="helvetica 12", borderwidth=6)
+    tür_buton = Button(pencere, text="Seç", command=Türü_düzenle, font="helvetica 12", borderwidth=6)
     tür_buton.place(x=300, y=400)
     # ---------
 
@@ -555,7 +516,7 @@ def daire_düzenle():
     banyo_label = Label(text="Banyo Türünü Seçiniz", font="helvetica 12", borderwidth=6)
     banyo_label.place(x=300, y=700)
 
-    banyolar = ["0", "1", "2", "3", "4", "5", "6+"]
+    banyolar = ["0", "1", "2", "3", "4", "5", "6+","15","1075"]
     banyo_kutu = Combobox(pencere, values=banyolar)
     banyo_kutu.place(x=300, y=750)
 
@@ -563,24 +524,15 @@ def daire_düzenle():
     banyo_buton.place(x=300, y=800)
     # --------------------
 
-    # WC SAYISI
-    wc_label = Label(text="WC Türünü Seçiniz", font="helvetica 12", borderwidth=6)
-    wc_label.place(x=500, y=700)
 
-    wcler = ["0", "1", "2", "3", "4", "5", "6+"]
-    wc_kutu = Combobox(pencere, values=wcler)
-    wc_kutu.place(x=500, y=750)
-
-    wc_buton = Button(pencere, text="Seç", command=wc_düzenle, font="helvetica 12", borderwidth=6)
-    wc_buton.place(x=500, y=800)
     # --------------
 
     # DAİRENİN KATI
     daire_label = Label(text="Daire Katını Seçiniz", font="helvetica 12", borderwidth=6)
     daire_label.place(x=700, y=700)
 
-    daireler = ["-1", "-2", "-3", "Giriş", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10-20", "20-30", "30-40",
-                "Bahçe Dublex", "Bahçe Katı", "Bodrum", "Müstakil", "Villa Tipi", "Çatı Dublex", "Çatı Katı"]
+    daireler = ["-1", "-2", "-3", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10-20", "20-30", "30-40",
+                 "Bodrum", "Çatı Katı","Giriş"]
     daire_kutu = Combobox(pencere, values=daireler)
     daire_kutu.place(x=700, y=750)
 
@@ -590,21 +542,20 @@ def daire_düzenle():
     # ML KISIM BAŞLANGIÇ
 
     def hesapla():
-        yeni_veri = [[ilce], [tür], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo], [wc], [daire]]
+        yeni_veri = [[İlçe], [Türü], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo], [daire]]
         yeni_veri = pd.DataFrame(yeni_veri).T
         # kullanıcı seçe bastığı zaman bir değer oluşuyor o değeri de yeni_veri adında bir değişkene atadım ve bunu dataframe'e çevirerek tranzpozunu aldım yani veri setinde makine öğrenmesini aynı hale getirdim ki makine öğrenmesinde tahmin ettirebileyim.
-        df_2 = yeni_veri.rename(columns={0: "ilçe",
-                                         1: "türü",
-                                         2: "net_metrekare",
-                                         3: "alan",
-                                         4: "oda_sayısı",
-                                         5: "bina_yaşı",
-                                         6: "ısıtma",
-                                         7: "site_içerisinde",
-                                         8: "eşya_durumu",
-                                         9: "banyo_sayısı",
-                                         10: "wc_sayısı",
-                                         11: "dairenin_katı"})
+        df_2 = yeni_veri.rename(columns={0: "İlçe",
+                                         1: "Türü",
+                                         2: "Net_Metrekare",
+                                         3: "Brüt_Metrekare",
+                                         4: "Oda_Sayısı",
+                                         5: "Binanın_Yaşı",
+                                         6: "Isıtma_Tipi",
+                                         7: "Site_İçerisinde",
+                                         8: "Eşya_Durumu",
+                                         9: "Banyo_Sayısı",
+                                         10: "Bulunduğu_Kat"})
 
         pred = model_xgb.predict(df_2)
 #sonra oluşturduğum modelde df_2 ye tahmin yaptırdım.bunu da pred diye tahmine atadım.
