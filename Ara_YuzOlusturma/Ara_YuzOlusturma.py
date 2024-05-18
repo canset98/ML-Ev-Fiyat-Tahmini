@@ -18,7 +18,7 @@ df = df_2.copy()
 
 # Fiyat tahmininde bize evin değerinin pahalı yada ucuz olduğunu hesapta göstermeye yarayan sütunlarımızı giriyoruz...
 df = df[["İlçe", "Türü", "Net_Metrekare", "Brüt_Metrekare", "Oda_Sayısı", "Binanın_Yaşı", "Isıtma_Tipi", "Site_İçerisinde",
-         "Eşya_Durumu", "Banyo_Sayısı", "Bulunduğu_Kat", "Fiyatı", "yaka", "Kullanım_Durumu", "Nüfus", "Yaşam_endeksi", "Mahalle", "Krediye_Uygunluk"]]
+         "Eşya_Durumu", "Banyo_Sayısı", "Bulunduğu_Kat", "Fiyatı", "yaka", "Kullanım_Durumu", "Nüfus", "Yaşam_endeksi", "Mahalle", "Krediye_Uygunluk","Yatırıma_Uygunluk"]]
 
 X = df.drop(["Fiyatı"], axis=1)
 y = df["Fiyatı"]
@@ -32,7 +32,7 @@ model_xgb = xgb1.fit(X_train, y_train)
 # İlk olarak bir pencere bir "nesne" oluşturuyoruz.
 pencere = Tk()
 pencere.title("Ev Fiyat Tahmini")  # Penceremizin başlığını veriyoruz
-pencere.configure(background='#81e6d9')  # Pencerenin arka plan rengini ve geometri ölçülerini veriyoruz.
+pencere.configure(background='#1E2762')  # Pencerenin arka plan rengini ve geometri ölçülerini veriyoruz.
 pencere.geometry("2000x2000")
 pencere.state("normal")
 
@@ -93,10 +93,10 @@ def İlçe_düzenle():
 def Kredi_düzenle():
     global Kredi
     kredi_deger = kredi_kutu.get()  # == yerine = kullanarak değeri atıyoruz
-    if kredi_deger == "Uygun":
+    if kredi_deger == "Krediye Uygun":
         Kredi = 0
         mesaj()
-    elif kredi_deger == "Değil":
+    elif kredi_deger == "Krediye Uygun Değil":
         Kredi = 1
         mesaj()
     else:
@@ -310,6 +310,20 @@ def banyo_düzenle():
     else:
         olumsuz()
 
+ #Yatırım
+def Yatırım_düzenle():
+    global Yatırım
+    yatırım_deger = yatırım_kutu.get()  # == yerine = kullanarak değeri atıyoruz
+    if yatırım_deger == "Yatırıma Uygun":
+        Yatırım  = 0
+        mesaj()
+    elif yatırım_deger == "Yatırıma Uygun Değil":
+        Yatırım = 1
+        mesaj()
+    else:
+        olumsuz()
+    print(Yatırım)
+
 
 def daire_düzenle():
     global daire
@@ -372,147 +386,158 @@ def daire_düzenle():
         olumsuz()
 
 
-baslık_label = Label(pencere, text="EV FİYAT TAHMİNİ", font="helvetica 50", borderwidth=20, padx=350, pady=40, background="#90cdf4")
+baslık_label = Label(pencere, text="EV FİYAT TAHMİNİ", font="helvetica 50", borderwidth=20, padx=350, pady=40, background="#7B2049")
 baslık_label.place(x=70, y=20)
 
 # İLÇE KISMI
-ilce_label = Label(text="İlçe Seçimi", font="helvetica 12", borderwidth=6)
-ilce_label.place(x=100, y=300)
+ilce_label = Label(text="İlçe Seçimi", font="helvetica 12", borderwidth=6,background='#418EC6')
+ilce_label.place(x=100, y=250)
 
 İlçeler = ["Çekmeköy", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"]
 İlçe_kutu = Combobox(pencere, values=İlçeler)
-İlçe_kutu.place(x=100, y=350)
+İlçe_kutu.place(x=100, y=300)
 
-ilce_buton = Button(pencere, text="Seç", command=İlçe_düzenle, font="helvetica 12", borderwidth=6)
-ilce_buton.place(x=100, y=400)
+ilce_buton = Button(pencere, text="Seç", command=İlçe_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+ilce_buton.place(x=100, y=350)
 
 #Krediye Uygunluk
-kredi_label=Label(text="Krediye Uygunluk", font="helvetica 12", borderwidth=6)
-kredi_label.place(x=300, y=300)
+kredi_label=Label(text="Krediye Uygunluk", font="helvetica 12", borderwidth=6,background='#418EC6')
+kredi_label.place(x=300, y=250)
 
-uygunluk = ["Uygun","Değil"]
+uygunluk = ["Krediye Uygun","Krediye Uygun Değil"]
 kredi_kutu = Combobox(pencere, values=uygunluk)
-kredi_kutu.place(x=300,y=350)
+kredi_kutu.place(x=300,y=300)
 
-kredi_buton = Button(pencere, text="Seç", command=Kredi_düzenle, font="helvetica 12", borderwidth=6)
-kredi_buton.place(x=300, y=400)
+kredi_buton = Button(pencere, text="Seç", command=Kredi_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+kredi_buton.place(x=300, y=350)
 
 
 
 # ODA SAYISI
-oda_label = Label(text="Oda Sayısı Seçiniz", font="helvetica 12", borderwidth=6)
-oda_label.place(x=500, y=300)
+oda_label = Label(text="Oda Sayısı Seçiniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+oda_label.place(x=500, y=250)
 
 odalar = ["1", "1+1", "2+1", "2+2", "3+1", "3+2", "4+1", "4+2", "5+1", "5+2", "5+3", "6+1", "6+2", "6+3", "7+2", "7+3", "8+", "Stüdyo"]
 oda_kutu = Combobox(pencere, values=odalar)
-oda_kutu.place(x=500, y=350)
+oda_kutu.place(x=500, y=300)
 
-oda_buton = Button(pencere, text="Seç", command=oda_düzenle, font="helvetica 12", borderwidth=6)
-oda_buton.place(x=500, y=400)
+oda_buton = Button(pencere, text="Seç", command=oda_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+oda_buton.place(x=500, y=350)
 
 # SİTE İÇERİSİNDE
-site_label = Label(text="Site Durumunu Seçiniz", font="helvetica 12", borderwidth=6)
-site_label.place(x=700, y=300)
+site_label = Label(text="Site Durumunu Seçiniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+site_label.place(x=700, y=250)
 siteler = ["Evet", "Hayır"]
 site_kutu = Combobox(pencere, values=siteler)
-site_kutu.place(x=700, y=350)
+site_kutu.place(x=700, y=300)
 
-site_buton = Button(pencere, text="Seç", command=site_düzenle, font="helvetica 12", borderwidth=6)
-site_buton.place(x=700, y=400)
+site_buton = Button(pencere, text="Seç", command=site_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+site_buton.place(x=700, y=350)
 
 # EŞYA DURUMU
-eşya_label = Label(pencere, text="Eşya Durumunu Seçiniz", font="helvetica 12", borderwidth=6)
-eşya_label.place(x=100, y=500)
+eşya_label = Label(pencere, text="Eşya Durumunu Seçiniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+eşya_label.place(x=100, y=450)
 
 eşyalar = ["Boş", "Eşyalı"]
 eşya_kutu = Combobox(pencere, values=eşyalar)
-eşya_kutu.place(x=100, y=550)
+eşya_kutu.place(x=100, y=500)
 
-eşya_buton = Button(pencere, text="Seç", command=eşya_düzenle, font="helvetica 12", borderwidth=6)
-eşya_buton.place(x=100, y=600)
+eşya_buton = Button(pencere, text="Seç", command=eşya_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+eşya_buton.place(x=100, y=550)
 
 # BİNA YAŞI
-yaş_label = Label(text="Bina Yaşını Seçiniz", font="helvetica 12", borderwidth=6)
-yaş_label.place(x=300, y=500)
+yaş_label = Label(text="Bina Yaşını Seçiniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+yaş_label.place(x=300, y=450)
 
 yaşlar = ["0", "1", "2", "3", "4", "5-10", "11-20", "20 ve üzeri"]
 yaşlar_kutu = Combobox(pencere, values=yaşlar)
-yaşlar_kutu.place(x=300, y=550)
+yaşlar_kutu.place(x=300, y=500)
 
-yaşlar_buton = Button(pencere, text="Seç", command=yaş_düzenle, font="helvetica 12", borderwidth=6)
-yaşlar_buton.place(x=300, y=600)
+yaşlar_buton = Button(pencere, text="Seç", command=yaş_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+yaşlar_buton.place(x=300, y=550)
 
 # NET METREKARE
-net_label = Label(text="Net Metrekareyi Giriniz", font="helvetica 12", borderwidth=6)
-net_label.place(x=500, y=500)
+net_label = Label(text="Net Metrekareyi Giriniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+net_label.place(x=500, y=450)
 
 net_entry = Entry()
-net_entry.place(x=500, y=550)
+net_entry.place(x=500, y=500)
 
-net_buton = Button(pencere, text="Seç", command=net_düzenle, font="helvetica 12", borderwidth=6)
-net_buton.place(x=500, y=600)
+net_buton = Button(pencere, text="Seç", command=net_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+net_buton.place(x=500, y=550)
 
-# ALAN DÜZENLE
-alan_label = Label(pencere, text="Evin Brüt Metrekaresini Girin", font="helvetica 12", borderwidth=6)
-alan_label.place(x=700, y=500)
+# BRÜT METREKARE DÜZENLE
+alan_label = Label(pencere, text="Brüt Metrekaresini Girin", font="helvetica 12", borderwidth=6,background='#418EC6')
+alan_label.place(x=700, y=450)
 
 alan_entry = Entry()
-alan_entry.place(x=700, y=550)
+alan_entry.place(x=700, y=500)
 
-alan_buton = Button(pencere, text="Seç", command=alan_düzenle, font="helvetica 12", borderwidth=6)
-alan_buton.place(x=700, y=600)
+alan_buton = Button(pencere, text="Seç", command=alan_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+alan_buton.place(x=700, y=550)
 
 # ISITMA
-ısıtma_label = Label(text="Isıtma Türünü Seçiniz", font="helvetica 12", borderwidth=6)
-ısıtma_label.place(x=100, y=700)
+ısıtma_label = Label(text="Isıtma Türünü Seçiniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+ısıtma_label.place(x=100, y=650)
 
 ısıtmalar = ["Doğalgaz Sobalı", "Güneş Enerjisi", "Isıtma Yok", "Kat Kaloriferi", "Klimalı", "Kombi Doğalgaz", "Merkezi (Pay Ölçer)", "Merkezi Doğalgaz", "Sobalı", "Yerden Isıtma"]
 ısıtma_kutu = Combobox(pencere, values=ısıtmalar)
-ısıtma_kutu.place(x=100, y=750)
+ısıtma_kutu.place(x=100, y=700)
 
-ısıtma_buton = Button(pencere, text="Seç", command=ısıtma_düzenle, font="helvetica 12", borderwidth=6)
-ısıtma_buton.place(x=100, y=800)
+ısıtma_buton = Button(pencere, text="Seç", command=ısıtma_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+ısıtma_buton.place(x=100, y=750)
 
 # BANYO SAYISI
-banyo_label = Label(text="Banyo Türünü Seçiniz", font="helvetica 12", borderwidth=6)
-banyo_label.place(x=300, y=700)
+banyo_label = Label(text="Banyo Türünü Seçiniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+banyo_label.place(x=300, y=650)
 
 banyolar = ["0", "1", "2", "3", "4", "5", "6+"]
 banyo_kutu = Combobox(pencere, values=banyolar)
-banyo_kutu.place(x=300, y=750)
+banyo_kutu.place(x=300, y=700)
 
-banyo_buton = Button(pencere, text="Seç", command=banyo_düzenle, font="helvetica 12", borderwidth=6)
-banyo_buton.place(x=300, y=800)
+banyo_buton = Button(pencere, text="Seç", command=banyo_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+banyo_buton.place(x=300, y=750)
+
+#YATIRIMA UYGUNLUK
+yatırım_label=Label(text="Yatırıma Uygunluk", font="helvetica 12", borderwidth=6,background='#418EC6')
+yatırım_label.place(x=500, y=650)
+
+uygunluk = ["Yatırıma Uygun","Yatırıma Uygun Değil"]
+yatırım_kutu = Combobox(pencere, values=uygunluk)
+yatırım_kutu.place(x=500,y=700)
+
+yatırım_buton = Button(pencere, text="Seç", command=Yatırım_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+yatırım_buton.place(x=500, y=750)
 
 # DAİRENİN KATI
-daire_label = Label(text="Daire Katını Seçiniz", font="helvetica 12", borderwidth=6)
-daire_label.place(x=700, y=700)
+daire_label = Label(text="Daire Katını Seçiniz", font="helvetica 12", borderwidth=6,background='#418EC6')
+daire_label.place(x=700, y=650)
 
 daireler = ["-1", "-2", "-3", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10-20", "20-30", "30-40", "Bodrum", "Çatı Katı", "Giriş"]
 daire_kutu = Combobox(pencere, values=daireler)
-daire_kutu.place(x=700, y=750)
+daire_kutu.place(x=700, y=700)
 
-daire_buton = Button(pencere, text="Seç", command=daire_düzenle, font="helvetica 12", borderwidth=6)
-daire_buton.place(x=700, y=800)
+daire_buton = Button(pencere, text="Seç", command=daire_düzenle, font="helvetica 12", borderwidth=6,background='#418EC6')
+daire_buton.place(x=700, y=750)
 
 # ML KISIM BAŞLANGIÇ
 def hesapla():
-    yeni_veri = [[İlçe], [Kredi], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo], [daire]]
+    yeni_veri = [[İlçe], [Kredi], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo],[Yatırım],[daire]]
     yeni_veri = pd.DataFrame(yeni_veri).T
-    df_2 = yeni_veri.rename(columns={0: "İlçe", 1: "Krediye_Uygunluk", 2: "Net_Metrekare", 3: "Brüt_Metrekare", 4: "Oda_Sayısı", 5: "Binanın_Yaşı", 6: "Isıtma_Tipi", 7: "Site_İçerisinde", 8: "Eşya_Durumu", 9: "Banyo_Sayısı", 10: "Bulunduğu_Kat"})
+    df_2 = yeni_veri.rename(columns={0: "İlçe", 1: "Krediye_Uygunluk", 2: "Net_Metrekare", 3: "Brüt_Metrekare", 4: "Oda_Sayısı", 5: "Binanın_Yaşı", 6: "Isıtma_Tipi", 7: "Site_İçerisinde", 8: "Eşya_Durumu", 9: "Banyo_Sayısı", 10: "Yatırıma_Uygunluk",11: "Bulunduğu_Kat"})
     pred = model_xgb.predict(df_2)
     if pred < 0:
         pred = -1 * pred
     pred = int(pred)
-    s2 = Label(pencere, text=pred, font="helvetica 20", borderwidth=6, padx=200, pady=40)
+    s2 = Label(pencere, text=pred, font="helvetica 20", borderwidth=6, padx=200, pady=40,background='#418EC6')
     s2.place(x=1210, y=700)
 
 # HESAPLA
-hesapla_buton = Button(pencere, text="HESAPLA", command=hesapla, font="helvetica 15", borderwidth=60, padx=65, pady=40, background="#f7fafc")
+hesapla_buton = Button(pencere, text="HESAPLA", command=hesapla, font="helvetica 15", borderwidth=60, padx=65, pady=40,background='#418EC6')
 hesapla_buton.place(x=1200, y=300)
 
-s1 = Label(pencere, text="", font="helvetica 12", borderwidth=6, padx=100, pady=40)
-s1.place(x=1250, y=700)
+s1 = Label(pencere, text="", font="helvetica 12", borderwidth=6, padx=100, pady=35,background='#418EC6')
+s1.place(x=1250, y=600)
 
 # Pencere döngüsünü başlat
 pencere.mainloop()
