@@ -33,7 +33,7 @@ model_xgb = xgb1.fit(X_train, y_train)
 pencere = Tk()
 pencere.title("Ev Fiyat Tahmini")  # Penceremizin başlığını veriyoruz
 pencere.configure(background='#81e6d9')  # Pencerenin arka plan rengini ve geometri ölçülerini veriyoruz.
-pencere.geometry("1700x900")
+pencere.geometry("900x900")
 pencere.state("normal")
 
 
@@ -392,7 +392,7 @@ kredi_label.place(x=300, y=300)
 
 uygunluk = ["Uygun","Değil"]
 kredi_kutu = Combobox(pencere, values=uygunluk)
-kredi_kutu.place(x=100,y=350)
+kredi_kutu.place(x=300,y=350)
 
 kredi_buton = Button(pencere, text="Seç", command=Kredi_düzenle, font="helvetica 12", borderwidth=6)
 kredi_buton.place(x=300, y=400)
@@ -453,7 +453,7 @@ net_buton = Button(pencere, text="Seç", command=net_düzenle, font="helvetica 1
 net_buton.place(x=500, y=600)
 
 # ALAN DÜZENLE
-alan_label = Label(pencere, text="Evin Brüt Metrekareyi Girin", font="helvetica 12", borderwidth=6)
+alan_label = Label(pencere, text="Evin Brüt Metrekaresini Girin", font="helvetica 12", borderwidth=6)
 alan_label.place(x=700, y=500)
 
 alan_entry = Entry()
