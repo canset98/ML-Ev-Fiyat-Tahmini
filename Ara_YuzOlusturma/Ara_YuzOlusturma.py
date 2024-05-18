@@ -33,7 +33,7 @@ model_xgb = xgb1.fit(X_train, y_train)
 pencere = Tk()
 pencere.title("Ev Fiyat Tahmini")  # Penceremizin başlığını veriyoruz
 pencere.configure(background='#81e6d9')  # Pencerenin arka plan rengini ve geometri ölçülerini veriyoruz.
-pencere.geometry("900x900")
+pencere.geometry("2000x2000")
 pencere.state("normal")
 
 
@@ -372,7 +372,7 @@ def daire_düzenle():
         olumsuz()
 
 
-baslık_label = Label(pencere, text="EV FİYAT TAHMİNİ", font="helvetica 50", borderwidth=20, padx=550, pady=40, background="#90cdf4")
+baslık_label = Label(pencere, text="EV FİYAT TAHMİNİ", font="helvetica 50", borderwidth=20, padx=350, pady=40, background="#90cdf4")
 baslık_label.place(x=70, y=20)
 
 # İLÇE KISMI
@@ -508,11 +508,11 @@ def hesapla():
     s2.place(x=1210, y=700)
 
 # HESAPLA
-hesapla_buton = Button(pencere, text="HESAPLA", command=hesapla, font="helvetica 15", borderwidth=60, padx=100, pady=40, background="#f7fafc")
+hesapla_buton = Button(pencere, text="HESAPLA", command=hesapla, font="helvetica 15", borderwidth=60, padx=65, pady=40, background="#f7fafc")
 hesapla_buton.place(x=1200, y=300)
 
-s1 = Label(pencere, text="", font="helvetica 12", borderwidth=6, padx=200, pady=40)
-s1.place(x=1210, y=700)
+s1 = Label(pencere, text="", font="helvetica 12", borderwidth=6, padx=100, pady=40)
+s1.place(x=1250, y=700)
 
 # Pencere döngüsünü başlat
 pencere.mainloop()
