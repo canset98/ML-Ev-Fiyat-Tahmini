@@ -101,37 +101,9 @@ def Kredi_düzenle():
         mesaj()
     else:
         olumsuz()
+    print(Kredi)
 
 
-def Türü_düzenle():
-    global Türü
-    Türü_deger = tür_kutu.get()
-    if Türü_deger == "Bina":
-        Türü = 0
-        mesaj()
-    elif Türü_deger == "Daire":
-        Türü = 1
-        mesaj()
-    elif Türü_deger == "Köşk":
-        Türü = 2
-        mesaj()
-    elif Türü_deger == "Müstakil":
-        Türü = 3
-        mesaj()
-    elif Türü_deger == "Residence":
-        Türü = 4
-        mesaj()
-    elif Türü_deger == "Villa Tipi":
-        Türü = 5
-        mesaj()
-    elif Türü_deger == "Yalı":
-        Türü = 6
-        mesaj()
-    elif Türü_deger == "yalı dairesi":
-        Türü = 7
-        mesaj()
-    else:
-        olumsuz()
 
 
 def net_düzenle():
@@ -425,16 +397,7 @@ kredi_kutu.place(x=100,y=350)
 kredi_buton = Button(pencere, text="Seç", command=Kredi_düzenle, font="helvetica 12", borderwidth=6)
 kredi_buton.place(x=300, y=400)
 
-# BİNA TÜRÜ
-bina_label = Label(text="Bina Türünü Seçiniz", font="helvetica 12", borderwidth=6)
-bina_label.place(x=300, y=300)
 
-türler = ["Bina", "Daire", "Köşk", "Müstakil", "Residence", "Villa Tipi", "Yalı", "yalı dairesi", "yazlık", "çiftlik evi"]
-tür_kutu = Combobox(pencere, values=türler)
-tür_kutu.place(x=300, y=350)
-
-tür_buton = Button(pencere, text="Seç", command=Türü_düzenle, font="helvetica 12", borderwidth=6)
-tür_buton.place(x=300, y=400)
 
 # ODA SAYISI
 oda_label = Label(text="Oda Sayısı Seçiniz", font="helvetica 12", borderwidth=6)
@@ -534,9 +497,9 @@ daire_buton.place(x=700, y=800)
 
 # ML KISIM BAŞLANGIÇ
 def hesapla():
-    yeni_veri = [[İlçe], [Türü], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo], [daire]]
+    yeni_veri = [[İlçe], [Kredi], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo], [daire]]
     yeni_veri = pd.DataFrame(yeni_veri).T
-    df_2 = yeni_veri.rename(columns={0: "İlçe", 1: "Türü", 2: "Net_Metrekare", 3: "Brüt_Metrekare", 4: "Oda_Sayısı", 5: "Binanın_Yaşı", 6: "Isıtma_Tipi", 7: "Site_İçerisinde", 8: "Eşya_Durumu", 9: "Banyo_Sayısı", 10: "Bulunduğu_Kat"})
+    df_2 = yeni_veri.rename(columns={0: "İlçe", 1: "Krediye_Uygunluk", 2: "Net_Metrekare", 3: "Brüt_Metrekare", 4: "Oda_Sayısı", 5: "Binanın_Yaşı", 6: "Isıtma_Tipi", 7: "Site_İçerisinde", 8: "Eşya_Durumu", 9: "Banyo_Sayısı", 10: "Bulunduğu_Kat"})
     pred = model_xgb.predict(df_2)
     if pred < 0:
         pred = -1 * pred
