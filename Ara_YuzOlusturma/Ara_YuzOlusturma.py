@@ -23,7 +23,7 @@ df_2 = (pd.read_csv(r"C:\Users\pvtech\Downloads\son_hali_emlakjet.csv"))
 df_2.drop("Unnamed: 0", axis = 1, inplace = True)
 df = df_2.copy()
 
-#Fiyat tahmininde bize evin değerinin pahalı yada ucuz olduğunu hesapta göstermeye yarayan sütunlarımızı giriyoruz.
+#Fiyat tahmininde bize evin değerinin pahalı yada ucuz olduğunu hesapta göstermeye yarayan sütunlarımızı giriyoruz...
 df = df[["İlçe","Türü","Net_Metrekare","Brüt_Metrekare","Oda_Sayısı","Binanın_Yaşı","Isıtma_Tipi","Site_İçerisinde",
          "Eşya_Durumu","Banyo_Sayısı","Bulunduğu_Kat","Fiyatı","yaka","Kullanım_Durumu","Nüfus","Yaşam_endeksi","Mahalle","Krediye_Uygunluk"]]
 
