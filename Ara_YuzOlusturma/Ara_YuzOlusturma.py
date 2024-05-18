@@ -1,6 +1,5 @@
 #gereken kütüphaneleri ekledik
 
-import pandas as pd
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
@@ -8,14 +7,8 @@ from tkinter.ttk import Combobox
 from tkinter import messagebox
 from tkinter import Canvas
 from tkinter import ttk
-import sklearn.model_selection
-from sklearn.metrics import mean_squared_error, r2_score
-import numpy as np
 import pandas as pd
-from sklearn import model_selection
-import xgboost as xgb
-from sklearn.model_selection import train_test_split
-from xgboost import XGBRegressor
+
 
 #Veri Setini Okuyoruz
 
@@ -30,7 +23,17 @@ df = df[["İlçe","Türü","Net_Metrekare","Brüt_Metrekare","Oda_Sayısı","Bin
 X = df.drop(["Fiyatı"], axis = 1)
 y = df["Fiyatı"]
 
+from sklearn.model_selection import train_test_split, GridSearchCV,cross_val_score
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
+import pandas as pd
+from sklearn import model_selection
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 144)
+
+import xgboost as xgb
+from xgboost import XGBRegressor
+
 xgb1 = XGBRegressor(colsample_bytree = 0.5, learning_rate = 0.09, max_depth = 4, n_estimators = 2000)
 model_xgb = xgb1.fit(X_train, y_train)
 model_xgb.predict(X_test)[15:20]
