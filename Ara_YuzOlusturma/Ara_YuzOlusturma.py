@@ -574,5 +574,6 @@ hesapla_buton = Button(pencere, text="HESAPLA", command=hesapla, font="helvetica
 hesapla_buton.place(x=1200, y=300)
 
 
+
 # Pencere döngüsünü başlat
 pencere.mainloop()
