@@ -573,5 +573,6 @@ def hesapla():
 hesapla_buton = Button(pencere, text="HESAPLA", command=hesapla, font="helvetica 15", borderwidth=60, padx=65, pady=40,background='#418EC6')
 hesapla_buton.place(x=1200, y=300)
 
+
 # Pencere döngüsünü başlat
 pencere.mainloop()
