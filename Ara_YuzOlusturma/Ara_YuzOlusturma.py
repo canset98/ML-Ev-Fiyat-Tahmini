@@ -17,8 +17,11 @@ df_2.drop("Unnamed: 0", axis=1, inplace=True)
 df = df_2.copy()
 
 # Fiyat tahmininde bize evin değerinin pahalı yada ucuz olduğunu hesapta göstermeye yarayan sütunlarımızı giriyoruz...
-df = df[["İlçe", "Türü", "Net_Metrekare", "Brüt_Metrekare", "Oda_Sayısı", "Binanın_Yaşı", "Isıtma_Tipi", "Site_İçerisinde",
-         "Eşya_Durumu", "Banyo_Sayısı", "Bulunduğu_Kat", "Fiyatı", "yaka", "Kullanım_Durumu", "Nüfus", "Yaşam_endeksi", "Mahalle", "Krediye_Uygunluk","Yatırıma_Uygunluk"]]
+df = df[['İlçe', 'Türü', 'Net_Metrekare', 'Brüt_Metrekare', 'Oda_Sayısı',
+                     'Binanın_Yaşı', 'Isıtma_Tipi', 'Site_İçerisinde', 'Kategorisi',
+                     'Eşya_Durumu', 'Takas', 'Bulunduğu_Kat', 'Banyo_Sayısı',
+                     'Binanın_Kat_Sayısı', 'Fiyat_Durumu','Fiyatı', 'yaka', 'İl', 'Kullanım_Durumu',
+                     'Nüfus', 'Yaşam_endeksi', 'Mahalle', 'Krediye_Uygunluk', 'Yatırıma_Uygunluk']]
 
 X = df.drop(["Fiyatı"], axis=1)
 y = df["Fiyatı"]
@@ -522,14 +525,30 @@ daire_buton.place(x=700, y=750)
 
 # ML KISIM BAŞLANGIÇ
 def hesapla():
-    yeni_veri = [[İlçe], [Kredi], [net], [alan], [oda], [yaş], [ısıtma], [site], [eşya], [banyo],[Yatırım],[daire]]
-    yeni_veri = pd.DataFrame(yeni_veri).T
-    df_2 = yeni_veri.rename(columns={0: "İlçe", 1: "Krediye_Uygunluk", 2: "Net_Metrekare", 3: "Brüt_Metrekare", 4: "Oda_Sayısı", 5: "Binanın_Yaşı", 6: "Isıtma_Tipi", 7: "Site_İçerisinde", 8: "Eşya_Durumu", 9: "Banyo_Sayısı", 10: "Yatırıma_Uygunluk",11: "Bulunduğu_Kat"})
-    pred = model_xgb.predict(df_2)
+    # Daha önce belirlenmiş değişkenlerden yeni bir DataFrame oluşturuyoruz.
+    yeni_veri = pd.DataFrame({
+        "İlçe": [İlçe],
+        "Krediye_Uygunluk": [Kredi],
+        "Net_Metrekare": [net],
+        "Brüt_Metrekare": [alan],
+        "Oda_Sayısı": [oda],
+        "Binanın_Yaşı": [yaş],
+        "Isıtma_Tipi": [ısıtma],
+        "Site_İçerisinde": [site],
+        "Eşya_Durumu": [eşya],
+        "Banyo_Sayısı": [banyo],
+        "Yatırıma_Uygunluk": [Yatırım],
+        "Bulunduğu_Kat": [daire]
+    })
+
+    # Modeli kullanarak tahmin yapıyoruz.
+    pred = model_xgb.predict(yeni_veri)
+
+    # Tahmin edilen değeri görselleştiriyoruz.
     if pred < 0:
         pred = -1 * pred
     pred = int(pred)
-    s2 = Label(pencere, text=pred, font="helvetica 20", borderwidth=6, padx=200, pady=40,background='#418EC6')
+    s2 = Label(pencere, text=f"Tahmini Fiyat: {pred} TL", font="helvetica 20", borderwidth=6, padx=200, pady=40,background='#418EC6')
     s2.place(x=1210, y=700)
 
 # HESAPLA
