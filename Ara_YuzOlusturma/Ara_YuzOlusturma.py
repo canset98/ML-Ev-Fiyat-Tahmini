@@ -345,7 +345,6 @@ def Yatırım_düzenle():
         olumsuz()
     print(Yatırım)
 
-
 def daire_düzenle():
     global daire
     daire_deger = daire_kutu.get()
