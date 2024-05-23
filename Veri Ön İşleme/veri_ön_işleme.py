@@ -4,7 +4,7 @@ from sklearn import preprocessing  # etiketleme işlemi için gerekli kütüphan
 
 
 # Veri setini okuma işlemi gerçekleştiriyoruz.
-df = (pd.read_csv(r"C:\Users\1brah1m\Downloads\ML-Ev-Fiyat-Tahmini\VeriyiTanımaVeGörselleştirme\Emlakjet.csv"))
+df = (pd.read_csv(r"Emlakjet.csv"))
 print(df.head())
 
 print(df.columns)

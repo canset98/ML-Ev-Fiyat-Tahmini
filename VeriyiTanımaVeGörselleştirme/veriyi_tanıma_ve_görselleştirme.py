@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import os
 
 # veri setini tanıma
-df = (pd.read_csv(r"C:\Users\1brah1m\Downloads\ML-Ev-Fiyat-Tahmini\VeriyiTanımaVeGörselleştirme\Emlakjet.csv"))
+df = (pd.read_csv(r"Emlakjet.csv"))
 
 print(df.info())
 

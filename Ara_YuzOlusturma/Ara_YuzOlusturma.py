@@ -12,7 +12,7 @@ import xgboost as xgb
 from xgboost import XGBRegressor
 
 # Veri Setini Okuyoruz
-df_2 = pd.read_csv(r"C:\Users\pvtech\Downloads\son_hali_emlakjet.csv")
+df_2 = pd.read_csv(r"son_hali_emlakjet.csv")
 df_2.drop("Unnamed: 0", axis=1, inplace=True)
 df = df_2.copy()
 
